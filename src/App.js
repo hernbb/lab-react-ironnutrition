@@ -27,6 +27,13 @@ function App() {
    setComidaFiltrada(filteredFood)
   }
 
+  const deleteFood = (name) => {
+    const deletedFood = comidaFiltrada.filter((byFood) => {
+      return byFood.name !== name;
+    })
+    setComidaFiltrada(deletedFood)
+  }
+
   return (
     <div className='App App-card'>
     <h1 style={{color: "white"}}>Food List</h1>
@@ -43,12 +50,16 @@ function App() {
     {comidaFiltrada.map((food) => {
       
       return (
+        
         <FoodBox 
         key={food.name}
         name = {food.name}
         calories =  {food.calories}
         image = {food.image}
-        servings={food.servings} />
+        servings={food.servings} 
+        deleteFood={deleteFood}
+        />
+        
       )
 
     })
